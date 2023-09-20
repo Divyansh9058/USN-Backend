@@ -54,8 +54,6 @@ contactUsRouter.post("/addcontact", async (req, res) => {
       finaldate,
       finaltime
     });
-    console.log(finaldate)
-    console.log(finaltime)
     await contact.save();
     res.send({ msg: "Contact has been added" });
   } catch (err) {
