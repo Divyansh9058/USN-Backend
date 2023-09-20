@@ -11,7 +11,8 @@ userRouter.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
-   if(email === process.env.email && password === process.env.pass){
+   if(email === process.env.id && password === 
+    process.env.pass){
 
     const token = await jwt.sign(
       { email },
