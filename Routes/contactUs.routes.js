@@ -19,7 +19,7 @@ contactUsRouter.get("/", async (req, res) => {
 });
 
 contactUsRouter.post("/addcontact", async (req, res) => {
-  let { name, email, message, phone, status, date, time} = req.body;
+  let { name, email, message, phone, status} = req.body;
   try {
     function get_date() {
       let date = new Date();
@@ -42,6 +42,7 @@ contactUsRouter.post("/addcontact", async (req, res) => {
       var time = hours + ":" + mins + " " + ampm;
       return time;
   }
+
     const finaldate = get_date();
     const finaltime = get_time();
     const contact = new contactUs({
@@ -53,6 +54,8 @@ contactUsRouter.post("/addcontact", async (req, res) => {
       finaldate,
       finaltime
     });
+    console.log(finaldate)
+    console.log(finaltime)
     await contact.save();
     res.send({ msg: "Contact has been added" });
   } catch (err) {
